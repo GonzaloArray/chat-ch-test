@@ -6,15 +6,19 @@ import ChipGeneric from '@/components/common/chip-generic.vue'
 import UserTitle from '@/components/common/name-user.vue'
 
 import { defineProps } from 'vue'
+import { useCustomerStore } from '@/stores/useCustomer'
 
 const props = defineProps({
   customer: Object
 })
+
+const store = useCustomerStore()
+
 </script>
 
 <template>
   <RouterLink :to="`/conversaciones/${props.customer?.id}`" class="relative">
-    <div class="flex flex-col gap-2 p-4 items-start border-b-2 hover:bg-yellow-100">
+    <div class="flex flex-col gap-2 p-4 items-start border-b-2 hover:bg-yellow-100" :class="{ 'bg-yellow-100': store.customer?.id === props.customer?.id }">
       <span class="absolute top-[10px] right-0 text-gray-400 text-xs px-2 py-1">hace 28 min</span>
       <div class="flex">
         <IconUser />
