@@ -3,9 +3,9 @@
 
 </script>
 <template>
-  <div class="grid grid-cols-12 h-full">
+  <div class="grid grid-cols-12 h-full relative">
     <AsideChatDashboard />
-    <section class="col-span-9">
+    <section class="col-span-12 row-span-12 xl:col-span-9 h-full flex-1">
       <RouterView/>
     </section>
   </div>

@@ -1,13 +1,32 @@
 <template>
-  <div :class="{ 'text-left': props.type === 'customer', 'text-right': props.type !== 'customer' }">
-    <span v-if="props.type === 'customer'" class="text-sm bg-blue-500 p-3 rounded-full font-semibold w-[50px] h-[50px]">C</span>
-    <p class="text-sm bg-blue-300 rounded-md inline-block p-2 mx-2">{{ props.message }}</p>
-    <span v-if="props.type !== 'customer'" class="text-sm bg-blue-500 p-3 rounded-full font-semibold w-[50px] h-[50px]">Y</span>
+  <div class="flex relative" :class="{ 'justify-start': props.type === 'customer', 'justify-end': props.type !== 'customer' }">
+    <Avatar v-if="props.type === 'customer'">
+      {{ store.customer?.firstname.slice(0, 1) }}
+    </Avatar>
+    <Message :message="props.message">
+      <Time class-name=" button-2 text-right right-0 rounded-full p-1 text-xs" :date="props.date" />
+    </Message>
+    <Avatar v-if="props.type !== 'customer'">
+      You
+    </Avatar>
+    <TimeGeneric/>
   </div>
 </template>
 <script setup lang="ts">
+import Message from '../common/message-generic.vue';
+import Avatar from '../common/avatar-generic.vue';
+import Time from '../common/time-generic.vue';
+
+import { useCustomerStore } from '@/stores/useCustomer';
+
+const store = useCustomerStore()
+
 const props = defineProps({
   type: String,
+  date: String,
   message: String
 })
+
+
 </script>
+

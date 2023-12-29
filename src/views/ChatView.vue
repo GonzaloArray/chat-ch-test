@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {  onMounted, ref, watch} from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import HeaderChat from '@/components/chat/header-chat.vue'
 import IconSend from '@/components/icons/IconSend.vue'
@@ -8,8 +8,6 @@ import PanelConfig from '@/components/chat/panel-config.vue'
 import { useCustomerStore } from '@/stores/useCustomer'
 import { useMessagesStore } from '@/stores/useMessage'
 
-import { mockChats } from '@/config/chat'
-
 const route = useRoute()
 
 const userId = ref(route.params.id as string)
@@ -17,34 +15,46 @@ const userId = ref(route.params.id as string)
 const storeCustomer = useCustomerStore()
 const storeMessage = useMessagesStore()
 
+const newMessage = ref('')
 
 onMounted(() => {
   storeCustomer.fetchCustomer(userId.value as string);
-  storeMessage.fetchMessages(userId.value as string, mockChats)
+  storeMessage.fetchMessages(userId.value as string)
 })
 
 watch(() => route.params.id, (newId) => {
   userId.value = newId as string
   storeCustomer.fetchCustomer(userId.value)
-  storeMessage.fetchMessages(userId.value as string, mockChats)
+  storeMessage.fetchMessages(userId.value as string)
 }, { immediate: true })
 
+const handleSubmit = () => {
+  if (newMessage.value.trim()) {
+    storeMessage.addMessage(userId.value, {
+      content: newMessage.value,
+      timestamp: new Date().toISOString(),
+      from: 'user'
+    })
+    newMessage.value = ''
+  }
+}
 
 </script>
 
 <template>
   <div class="grid grid-cols-12 h-full">
-    <div class="flex flex-col h-full col-span-9">
+    <div class="flex flex-col h-full col-span-11 xl:col-span-9">
       <HeaderChat :first-name="storeCustomer.customer?.firstname" :email="storeCustomer.customer?.email" />
-      <div class="flex-1 bg-image overflow-y-auto p-5">
+      <div class="flex-1 bg-image overflow-y-auto p-2 md:p-3 xl:p-5">
         <ul>
           <li v-for="message in storeMessage.messages" :key="message.timestamp" class="mb-2">
-            <ConversationChat :message="message.content" :type="message.from" />
+            <ConversationChat :date="message.timestamp" :message="message.content" :type="message.from" />
           </li>
         </ul>
       </div>
-      <form class="h-[70px] flex items-center p-3 border-t-2">
+      <form @submit.prevent="handleSubmit" class="h-[70px] flex items-center p-3 border-t-2">
         <input
+          v-model="newMessage"
           class="w-full bg-slate-100 border-slate-300 border-2 p-2 rounded-md"
           type="text"
           placeholder="Escribir un mensaje..."

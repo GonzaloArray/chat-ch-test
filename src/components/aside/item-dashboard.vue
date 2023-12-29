@@ -19,7 +19,7 @@ const props = defineProps({
       v-for="link in props.additionalLinks"
       :key="link.name"
     >
-      <RouterLink class="text-xs p-2 w-full text-gray-300" :to="link.link">{{ link.name }}</RouterLink>
+      <RouterLink class="text-xs p-2 w-full text-gray-300" :to="link.link">  {{ link.name }}</RouterLink>
     </li>
   </ul>
 </template>
