@@ -43,3 +43,24 @@ A continuación, se presentan imágenes que muestran el avance del proyecto en s
 3. Versión final del producto:
    ![Producto Final](./src/assets/proyect/Finish.jpeg)
 
+
+
+
+## Mejoras Futuras para el Chat
+
+Una mejora significativa para la experiencia de usuario en el chat sería implementar una funcionalidad que permita que los mensajes recién llegados se muestren al principio de la conversación. Esto facilitaría a los usuarios ver los mensajes más recientes sin necesidad de desplazarse a través de todo el historial de chat. La implementación de esta característica podría incluir un sistema de ordenamiento que priorice los mensajes nuevos o un botón para desplazarse rápidamente al último mensaje recibido.
+
+
+
+### Mejoras de Interfaz
+
+Para mejorar la experiencia de usuario en la interfaz del chat, se considerarán las siguientes mejoras:
+
+- **Modo Oscuro**: Implementación de un modo oscuro para reducir la fatiga visual durante el uso nocturno o en entornos con poca luz.
+- **Personalización de Temas**: Permitir a los usuarios personalizar los colores y temas del chat para una experiencia más personal.
+- **Notificaciones de Mensajes**: Mejorar el sistema de notificaciones para informar a los usuarios de nuevos mensajes de manera más efectiva.
+- **Emojis y Gifs**: Integrar un selector de emojis y gifs para enriquecer la comunicación y hacerla más expresiva.
+- **Respuestas Directas**: Añadir la posibilidad de responder a mensajes específicos para facilitar el seguimiento de conversaciones.
+- **Vista de Conversaciones Ancladas**: Permitir a los usuarios anclar conversaciones importantes en la parte superior de la lista de chats.
+
+
