@@ -1,20 +1,44 @@
-Por supuesto, aquí tienes una descripción amigable y funcional para navegar por una aplicación al estilo de WhatsApp, pero enfocada en una tienda de cómics y merchandising de anime y manga:
+# Guía de Configuración y Ejecución del Proyecto
 
----
+## Introducción
 
-**Descripción para Navegar por la Aplicación al Estilo WhatsApp de 'La Revistería Comics':**
+Este README proporciona una visión general de la estructura del proyecto e instrucciones sobre cómo configurar y ejecutar la aplicación.
 
-"¡Bienvenido a la experiencia de chat de CONVOS! Nuestra aplicación está diseñada para que te sientas como si estuvieras enviando mensajes a un amigo. Aquí, puedes navegar fácilmente por nuestras categorías de productos, hacer preguntas, recibir recomendaciones personalizadas y mantenerte al día con las últimas novedades. 🚀
+## Estructura del Proyecto
 
-📚 **Cómo Usar la App:**
-1. **Iniciar Chat:** Simplemente toca el ícono de mensaje para empezar a chatear con nosotros.
-2. **Explorar Categorías:** Usa los menús de chat para navegar por diferentes categorías de productos.
-3. **Pedir Recomendaciones:** ¿No estás seguro de qué elegir? Pregúntanos y te ayudaremos a encontrar lo que buscas.
-4. **Recibir Actualizaciones:** Activa las notificaciones para enterarte de nuevos lanzamientos y ofertas especiales.
-5. **Realizar Pedidos:** Cuando encuentres lo que te gusta, te guiaremos a través del proceso de compra, todo dentro del chat.
+- `src/`: Contiene el código fuente de la aplicación, incluyendo componentes Vue y recursos.
+  - `assets/`: Almacena archivos estáticos como hojas de estilo (main.css con Tailwind CSS).
+  - `components/`: Componentes Vue utilizados en toda la aplicación.
+    - `header/`: Componentes relacionados con la cabecera de la aplicación, como `NavBar.vue`.
+  - `views/`: Las diferentes vistas de la aplicación, cada una representada por un componente Vue.
+  - `router/`: Configuración de Vue Router para la navegación entre vistas.
+  - `store/`: Estado centralizado de la aplicación gestionado por Vuex.
+  - `utils/`: Funciones de utilidad y helpers que se pueden reutilizar en diferentes partes del proyecto.
+- `public/`: Activos públicos como el index.html y favicon.
+- `public/`: Activos públicos como el index.html y favicon.
 
-¡Disfruta de una experiencia de compra de cómics y merchandising de anime y manga tan fácil y amigable como enviar un mensaje de texto! 📲✨"
+## Instrucciones de Configuración
 
----
+Para configurar y ejecutar la aplicación localmente, sigue estos pasos paso por paso:
 
-Esta descripción combina la familiaridad de una app de mensajería como WhatsApp con la funcionalidad de una tienda de cómics y merchandising, asegurando que los usuarios se sientan cómodos y bien orientados al usar la aplicación.# chat-ch-test
+1. Clona el repositorio utilizando el comando:
+   ```
+   git clone https://github.com/GonzaloArray/chat-ch-test.git
+   ```
+2. Navega al directorio del proyecto en tu terminal con `cd chat-ch-test`.
+3. Instala las dependencias del proyecto con `npm install`.
+4. Ejecuta la aplicación en modo de desarrollo con `npm run dev`.
+5. Abre tu navegador y visita `http://localhost:3000` para ver la aplicación en funcionamiento.
+
+
+## Progreso del Proyecto
+
+A continuación, se presentan imágenes que muestran el avance del proyecto en sus diferentes etapas:
+
+1. Diseño inicial de la interfaz de usuario:
+   ![Diseño Inicial UI](./src/assets/proyect/Comienzo.jpeg)
+2. Implementación de la funcionalidad de chat:
+   ![Chat Funcionalidad](./src/assets/proyect/ChatConversation.jpeg)
+3. Versión final del producto:
+   ![Producto Final](./src/assets/proyect/Finish.jpeg)
+
