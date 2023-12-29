@@ -54,7 +54,7 @@ const handleSubmit = () => {
 
 <template>
   <div class="grid grid-cols-12 h-full">
-    <div class="flex flex-col h-[90vh] col-span-11 xl:col-span-9">
+    <div class="flex flex-col h-[84vh] xl:h-[90vh] col-span-11 xl:col-span-9">
       <HeaderChat :first-name="storeCustomer.customer?.firstname" :email="storeCustomer.customer?.email" />
       <div ref="chatContainer" class="flex-1 bg-image overflow-hidden overflow-y-auto p-2 md:p-3 xl:p-5">
         <ul>
