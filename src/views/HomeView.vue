@@ -5,7 +5,7 @@
 <template>
   <div class="flex flex-1 relative">
     <AsideDashboardInbox/>
-    <main class="flex-1 w-full h-full overflow-hidden">
+    <main class="flex-1 w-full h-full ">
       <RouterView/>
     </main>
   </div>

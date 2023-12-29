@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { onMounted, ref, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import HeaderChat from '@/components/chat/header-chat.vue'
 import IconSend from '@/components/icons/IconSend.vue'
@@ -17,6 +17,8 @@ const storeMessage = useMessagesStore()
 
 const newMessage = ref('')
 
+const chatContainer = ref<HTMLElement | null>(null);
+
 onMounted(() => {
   storeCustomer.fetchCustomer(userId.value as string);
   storeMessage.fetchMessages(userId.value as string)
@@ -27,6 +29,15 @@ watch(() => route.params.id, (newId) => {
   storeCustomer.fetchCustomer(userId.value)
   storeMessage.fetchMessages(userId.value as string)
 }, { immediate: true })
+
+watch(storeMessage.messages, () => {
+  nextTick(() => {
+    const chatElem = chatContainer.value
+    if (chatElem && chatElem instanceof HTMLElement) {
+      chatElem.scrollTop = chatElem.scrollHeight
+    }
+  })
+})
 
 const handleSubmit = () => {
   if (newMessage.value.trim()) {
@@ -43,9 +54,9 @@ const handleSubmit = () => {
 
 <template>
   <div class="grid grid-cols-12 h-full">
-    <div class="flex flex-col h-full col-span-11 xl:col-span-9">
+    <div class="flex flex-col h-[90vh] col-span-11 xl:col-span-9">
       <HeaderChat :first-name="storeCustomer.customer?.firstname" :email="storeCustomer.customer?.email" />
-      <div class="flex-1 bg-image overflow-y-auto p-2 md:p-3 xl:p-5">
+      <div ref="chatContainer" class="flex-1 bg-image overflow-hidden overflow-y-auto p-2 md:p-3 xl:p-5">
         <ul>
           <li v-for="message in storeMessage.messages" :key="message.timestamp" class="mb-2">
             <ConversationChat :date="message.timestamp" :message="message.content" :type="message.from" />
@@ -76,5 +87,18 @@ const handleSubmit = () => {
   background-size: 500px;
   background-color: rgba(0, 0, 0, 0.092);
   background-blend-mode: darken;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>
