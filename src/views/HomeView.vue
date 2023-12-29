@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <div class="flex flex-1 relative overflow-hidden">
+  <div class="flex flex-1 relative">
     <AsideDashboardInbox/>
-    <main class="flex">
+    <main class="flex-1 w-full h-full overflow-hidden">
       <RouterView/>
     </main>
   </div>

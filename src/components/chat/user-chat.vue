@@ -13,7 +13,8 @@ import { getConvertDateHour, getCalculateTimeAgo } from '@/helper/fnDate'
 import Avatar from '../common/avatar-generic.vue'
 
 const props = defineProps({
-  customer: Object
+  customer: Object,
+  change: Function
 })
 
 const store = useCustomerStore()
@@ -24,7 +25,7 @@ const lastMessage = computed(() => {
   const messages = storeMessage.mock
     .find(chat => chat.id === props.customer?.id)?.messages
   if (messages && messages.length > 0) {
-    return messages.reduce((latest, message) => 
+    return messages.reduce((latest, message) =>
       new Date(latest.timestamp).getTime() > new Date(message.timestamp).getTime() ? latest : message
     );
   }
@@ -46,7 +47,7 @@ const lastMessageContent = computed(() => {
 </script>
 
 <template>
-  <RouterLink :to="`/conversaciones/${props.customer?.id}`" class="relative">
+  <RouterLink @click.prevent="change" :to="`/conversaciones/${props.customer?.id}`" class="relative">
     <div class="flex flex-col gap-2 p-4 items-start border-b-2 hover:bg-yellow-100" :class="{ 'bg-yellow-100': store.customer?.id === props.customer?.id }">
       <span class="absolute top-[10px] right-0 text-gray-400 text-xs px-2 py-1">{{ lastMessageAgo }}</span>
       <div class="flex">

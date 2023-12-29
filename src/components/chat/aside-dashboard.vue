@@ -9,7 +9,8 @@ import IconClose from '../icons/IconClose.vue'
 
 const isMobile = useMediaQuery('(max-width: 1279px)')
 const isChatHiddenMobile = ref(isMobile)
-const toogle = ref(false)
+const toggle = ref(false)
+
 
 const apiClient = new ApiClient()
 const customers = ref<Customer[]>([])
@@ -26,31 +27,36 @@ const filteredCustomers = computed(() => {
   )
 })
 
-function toggleChatMobile() {
-  toogle.value = !toogle.value
+const toggleChatMobile = () => {
+  toggle.value = !toggle.value
 }
+
+const toggleChangeDefault = () => {
+  toggle.value = false
+}
+
 </script>
 
 <template>
   <section
     :class="{
-      'absolute left-0 bottom-0 top-0 right-0 bg-white z-50': isChatHiddenMobile && toogle,
+      'absolute left-0 bottom-0 top-0 right-0 bg-white z-50': isChatHiddenMobile && toggle,
       'relative h-full col-span-1 md:col-span-3': !isChatHiddenMobile,
-      'relative col-span-12': !toogle
+      'relative col-span-12': !toggle
     }"
-    class="border-r-2 flex flex-col overflow-scroll h-[100vh]"
+    class="flex flex-col border-r-2 xl:h-[90vh]  xl:overflow-scroll"
   >
     <button
       class="bg-gray-100 flex justify-center items-center p-2 border-b-2"
-      :class="{ 'h-full': !toogle }"
+      :class="{ 'h-full': !toggle }"
       @click="toggleChatMobile"
       v-show="isMobile"
     >
-      <IconChat v-show="!toogle" />
-      <IconClose v-show="toogle" />
+      <IconChat v-show="!toggle" />
+      <IconClose v-show="toggle" />
     </button>
     <div
-      :class="{ hidden: !toogle && isMobile }"
+      :class="{ hidden: !toggle && isMobile }"
       class="flex flex-col items-center px-3 py-3 border-b-2"
     >
       <input
@@ -64,10 +70,10 @@ function toggleChatMobile() {
     <div
       class="overflow-y-scroll overflow-hidden"
       style="scrollbar-width: thin; -ms-overflow-style: none"
-      :class="{ hidden: !toogle && isMobile }"
+      :class="{ hidden: !toggle && isMobile }"
     >
       <div v-for="customer in filteredCustomers" :key="customer.id" class="border-b">
-        <UserChatVue :customer="customer" />
+        <UserChatVue :customer="customer" :change="toggleChangeDefault" />
       </div>
     </div>
   </section>
