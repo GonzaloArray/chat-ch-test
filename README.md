@@ -37,7 +37,8 @@ A continuación, se presentan imágenes que muestran el avance del proyecto en s
 
 1. Diseño inicial de la interfaz de usuario:
    ![Diseño Inicial UI](./src/assets/proyect/Comienzo.jpeg)
-2. Implementación de la funcionalidad de chat:
+2. Explicación de la funcionalidad de chat:
+   La implementación del chat permite a los usuarios comunicarse en tiempo real, intercambiando mensajes de manera fluida y dinámica.
    ![Chat Funcionalidad](./src/assets/proyect/ChatConversation.jpeg)
 3. Versión final del producto:
    ![Producto Final](./src/assets/proyect/Finish.jpeg)
